@@ -29,9 +29,12 @@ class _SuraScreenState extends State<SuraScreen> {
       loadSuraLines(args.index);
     }
     return Stack(children: [
-      provider.appTheme == ThemeMode.dark
-          ? const Image(image: AssetImage('assets/images/dark_bg.png'))
-          : const Image(image: AssetImage('assets/images/default_bg.png')),
+      Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: provider.appTheme == ThemeMode.dark
+            ? const Image(image: AssetImage('assets/images/dark_bg.png'),fit: BoxFit.cover,)
+            : const Image(image: AssetImage('assets/images/default_bg.png'),fit: BoxFit.cover,),),
       Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -44,7 +47,7 @@ class _SuraScreenState extends State<SuraScreen> {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(30),
               color: MyThemeData.whiteColor),
-          padding: EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+          padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
           margin: const EdgeInsets.symmetric(horizontal: 28, vertical: 40),
           child: verses.isEmpty
               ? Center(

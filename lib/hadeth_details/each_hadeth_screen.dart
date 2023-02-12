@@ -24,9 +24,12 @@ class _HadethScreenState extends State<HadethScreen> {
     var args = ModalRoute.of(context)?.settings.arguments as Hadeth;
     var provider = Provider.of<AppConfigProvider>(context);
     return Stack(children: [
-      provider.appTheme == ThemeMode.dark
-          ? const Image(image: AssetImage('assets/images/dark_bg.png'))
-          : const Image(image: AssetImage('assets/images/default_bg.png')),
+      Container(
+        height: double.infinity,
+        width: double.infinity,
+        child: provider.appTheme == ThemeMode.dark
+            ? const Image(image: AssetImage('assets/images/dark_bg.png'),fit: BoxFit.cover,)
+            : const Image(image: AssetImage('assets/images/default_bg.png'),fit: BoxFit.cover,),),
       Scaffold(
         appBar: AppBar(
           centerTitle: true,
