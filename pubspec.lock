@@ -155,6 +155,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_radio_player:
+    dependency: "direct main"
+    description:
+      name: flutter_radio_player
+      sha256: dc565f583510867d533378c660b8f6a9e313e5462ba507310ca273a0a82cc3de
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
