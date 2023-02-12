@@ -15,10 +15,24 @@ class _HadethTabState extends State<HadethTab> {
   static List<Hadeth> allAhadethList = [];
 
   @override
+  void initState() {
+    super.initState();
+    if(allAhadethList.isEmpty){
+      loadAhadeth();
+      setState(() {
+
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    /*loadAhadeth();
     if(allAhadethList.isEmpty){
       loadAhadeth();
     }
+
+     */
     return Column(children: [
       Container(
         alignment: Alignment.center,
@@ -64,6 +78,7 @@ class _HadethTabState extends State<HadethTab> {
   }
 
   void loadAhadeth() async {
+    setState(() {});
     String allAhadeth = await rootBundle.loadString('assets/files/ahadeth.txt');
     List<String> ahadethContetntAndTitle = allAhadeth.split('#\r\n');
     for (int i = 0; i < allAhadeth.length; i++) {
@@ -73,6 +88,7 @@ class _HadethTabState extends State<HadethTab> {
       Hadeth hadeth = Hadeth(title: title, content: eachHadeth);
       allAhadethList.add(hadeth);
     }
+    allAhadethList.isNotEmpty == true ;
     setState(() {});
   }
 }
