@@ -15,6 +15,7 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
     var provider = Provider.of<AppConfigProvider>(context);
 
     return Container(
+      height: 250,
       margin: const EdgeInsets.all(18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

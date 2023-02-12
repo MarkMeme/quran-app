@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppConfigProvider extends ChangeNotifier{
   String appLanguage = 'en';
   ThemeMode appTheme = ThemeMode.light;
-  void changeLanguage(String newLanguage){
+  Future<void> changeLanguage(String newLanguage) async {
     if(newLanguage == appLanguage){
       return;
     }
     else{
       appLanguage = newLanguage ;
     }
-    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('lng',appLanguage);
+    notifyListeners() ;
   }
 
-  void changeTheme(ThemeMode newTheme){
+  Future<void> changeTheme(ThemeMode newTheme) async {
     if(newTheme == appTheme){
       return;
     }
     else{
       appTheme = newTheme ;
     }
-    notifyListeners();
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('theme',newTheme == ThemeMode.light ? 'light' : 'dark');
+    notifyListeners() ;
   }
 }
