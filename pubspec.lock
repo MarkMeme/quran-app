@@ -155,14 +155,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_radio_player:
-    dependency: "direct main"
-    description:
-      name: flutter_radio_player
-      sha256: dc565f583510867d533378c660b8f6a9e313e5462ba507310ca273a0a82cc3de
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.0.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -333,6 +325,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.5"
+  radio_player:
+    dependency: "direct main"
+    description:
+      name: radio_player
+      sha256: c7c4f7e004274d46fa5176c4d6e7615782561dec0bc2b91f9772c8e1370710f3
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.1"
   shared_preferences:
     dependency: "direct main"
     description:
@@ -483,5 +483,5 @@ packages:
     source: hosted
     version: "1.0.0"
 sdks:
-  dart: ">=2.18.2 <4.0.0"
+  dart: ">=2.18.2 <3.0.0"
   flutter: ">=3.0.0"
