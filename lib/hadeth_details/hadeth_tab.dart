@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../MyThemeData.dart';
+
 import 'hafeth_title_style.dart';
 
 class HadethTab extends StatefulWidget {
@@ -16,23 +16,17 @@ class _HadethTabState extends State<HadethTab> {
 
   @override
   void initState() {
+    loadAhadeth();
     super.initState();
-    if(allAhadethList.isEmpty){
+    if (allAhadethList.isEmpty) {
       loadAhadeth();
-      setState(() {
-
-      });
+      print(allAhadethList.length);
+      setState(() {});
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    /*loadAhadeth();
-    if(allAhadethList.isEmpty){
-      loadAhadeth();
-    }
-
-     */
     return Column(children: [
       Container(
         alignment: Alignment.center,
@@ -70,7 +64,10 @@ class _HadethTabState extends State<HadethTab> {
                 );
               },
               itemBuilder: (context, index) {
-                return HadethTitleStyle( name: allAhadethList[index].title,hadeth: allAhadethList[index],);
+                return HadethTitleStyle(
+                  name: allAhadethList[index].title,
+                  hadeth: allAhadethList[index],
+                );
               },
               itemCount: allAhadethList.length,
             )),
@@ -78,17 +75,16 @@ class _HadethTabState extends State<HadethTab> {
   }
 
   void loadAhadeth() async {
-    setState(() {});
     String allAhadeth = await rootBundle.loadString('assets/files/ahadeth.txt');
     List<String> ahadethContetntAndTitle = allAhadeth.split('#\r\n');
-    for (int i = 0; i < allAhadeth.length; i++) {
+    for (int i = 0; i < ahadethContetntAndTitle.length; i++) {
       List<String> eachHadeth = ahadethContetntAndTitle[i].split('\n');
       String title = eachHadeth[0];
       eachHadeth.removeAt(0);
       Hadeth hadeth = Hadeth(title: title, content: eachHadeth);
       allAhadethList.add(hadeth);
     }
-    allAhadethList.isNotEmpty == true ;
+    allAhadethList.isNotEmpty == true;
     setState(() {});
   }
 }
