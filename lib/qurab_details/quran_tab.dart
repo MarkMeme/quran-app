@@ -5,7 +5,7 @@ import 'SuraNameStyle.dart';
 
 class QuranTab extends StatelessWidget {
   List<String> names = [
-    "الفاتحه",
+    "الفاتحة",
     "البقرة",
     "آل عمران",
     "النساء",

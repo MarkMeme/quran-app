@@ -6,6 +6,7 @@ class MyThemeData {
   static Color whiteColor = Colors.white;
   static Color yellowColor = const Color(0xFFFACC1D);
   static Color primaryDark = const Color(0xFF141A2E);
+  static Color suraBackNavyBlue = const Color(0xFF181B37);
 
   static ThemeData lightMode = ThemeData(
     primaryColor: primaryColor,

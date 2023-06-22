@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -6,7 +5,6 @@ import 'package:provider/provider.dart';
 import '../MyThemeData.dart';
 import '../content_text.dart';
 import '../providers/AppConfigProvider.dart';
-import 'line_details.dart';
 
 class SuraScreen extends StatefulWidget {
   const SuraScreen({Key? key}) : super(key: key);
@@ -15,7 +13,6 @@ class SuraScreen extends StatefulWidget {
   @override
   State<SuraScreen> createState() => _SuraScreenState();
 }
-
 
 class _SuraScreenState extends State<SuraScreen> {
   List<String> verses = [];
@@ -33,10 +30,23 @@ class _SuraScreenState extends State<SuraScreen> {
         height: double.infinity,
         width: double.infinity,
         child: provider.appTheme == ThemeMode.dark
-            ? const Image(image: AssetImage('assets/images/dark_bg.png'),fit: BoxFit.cover,)
-            : const Image(image: AssetImage('assets/images/default_bg.png'),fit: BoxFit.cover,),),
+            ? const Image(
+                image: AssetImage('assets/images/dark_bg.png'),
+                fit: BoxFit.cover,
+              )
+            : const Image(
+                image: AssetImage('assets/images/default_bg.png'),
+                fit: BoxFit.cover,
+              ),
+      ),
       Scaffold(
         appBar: AppBar(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: provider.appTheme == ThemeMode.dark
+                ? Brightness.light
+                : Brightness.dark,
+          ),
           centerTitle: true,
           title: Text(
             args.name,
@@ -45,9 +55,16 @@ class _SuraScreenState extends State<SuraScreen> {
         ),
         body: Container(
           decoration: BoxDecoration(
+              border: Border.all(
+                  color: provider.appTheme == ThemeMode.dark
+                      ? MyThemeData.whiteColor
+                      : MyThemeData.blackColor,
+                  width: 2),
               borderRadius: BorderRadius.circular(30),
-              color: MyThemeData.whiteColor),
-          padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+              color: provider.appTheme == ThemeMode.dark
+                  ? Colors.transparent //MyThemeData.suraBackNavyBlue
+                  : MyThemeData.whiteColor),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           margin: const EdgeInsets.symmetric(horizontal: 28, vertical: 40),
           child: verses.isEmpty
               ? Center(
