@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+
 import '../MyThemeData.dart';
 import '../content_text.dart';
 import '../providers/AppConfigProvider.dart';
 import 'hadeth_tab.dart';
-
-
 
 class HadethScreen extends StatefulWidget {
   const HadethScreen({Key? key}) : super(key: key);
@@ -16,9 +15,7 @@ class HadethScreen extends StatefulWidget {
   State<HadethScreen> createState() => _HadethScreenState();
 }
 
-
 class _HadethScreenState extends State<HadethScreen> {
-
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as Hadeth;
@@ -28,10 +25,23 @@ class _HadethScreenState extends State<HadethScreen> {
         height: double.infinity,
         width: double.infinity,
         child: provider.appTheme == ThemeMode.dark
-            ? const Image(image: AssetImage('assets/images/dark_bg.png'),fit: BoxFit.cover,)
-            : const Image(image: AssetImage('assets/images/default_bg.png'),fit: BoxFit.cover,),),
+            ? const Image(
+                image: AssetImage('assets/images/dark_bg.png'),
+                fit: BoxFit.cover,
+              )
+            : const Image(
+                image: AssetImage('assets/images/default_bg.png'),
+                fit: BoxFit.cover,
+              ),
+      ),
       Scaffold(
         appBar: AppBar(
+          systemOverlayStyle: SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: provider.appTheme == ThemeMode.dark
+                ? Brightness.light
+                : Brightness.dark,
+          ),
           centerTitle: true,
           title: Text(
             args.title,
@@ -40,33 +50,38 @@ class _HadethScreenState extends State<HadethScreen> {
         ),
         body: Container(
           decoration: BoxDecoration(
+              border: Border.all(
+                  color: provider.appTheme == ThemeMode.dark
+                      ? MyThemeData.whiteColor
+                      : MyThemeData.blackColor,
+                  width: 2),
               borderRadius: BorderRadius.circular(30),
-              color: MyThemeData.whiteColor),
-          padding: const EdgeInsets.symmetric(vertical: 20,horizontal: 10),
+              color: provider.appTheme == ThemeMode.dark
+                  ? Colors.transparent //MyThemeData.suraBackNavyBlue
+                  : MyThemeData.whiteColor),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
           margin: const EdgeInsets.symmetric(horizontal: 28, vertical: 40),
           child: args.content.isEmpty
               ? Center(
-            child: CircularProgressIndicator(
-              color: Theme.of(context).primaryColor,
-            ),
-          )
+                  child: CircularProgressIndicator(
+                    color: Theme.of(context).primaryColor,
+                  ),
+                )
               : ListView.separated(
-              itemBuilder: (context, index) {
-                return ContentText(
-                  name: args.content[index],
-                );
-              },
-              separatorBuilder: (context, index) {
-                return Divider(
-                  thickness: 1,
-                  color: MyThemeData.primaryColor,
-                );
-              },
-              itemCount: args.content.length),
+                  itemBuilder: (context, index) {
+                    return ContentText(
+                      name: args.content[index],
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return Divider(
+                      thickness: 1,
+                      color: MyThemeData.primaryColor,
+                    );
+                  },
+                  itemCount: args.content.length),
         ),
       )
     ]);
   }
-
-
 }

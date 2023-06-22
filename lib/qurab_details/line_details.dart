@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:islami_app/qurab_details/sura_screen.dart';
 
 class LineDetails extends StatelessWidget {
   String name;
