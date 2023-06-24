@@ -1,16 +1,14 @@
 # quran_app
 
-A new Flutter project.
+An Islamic app with many features.
+the app in dark and light modes with English and Arabic languages.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+Light Mode:
 
-A few resources to get you started if this is your first Flutter project:
+![quran app light mode](https://github.com/MarkMeme/quran-app/assets/119113382/4679d837-2d64-487f-8681-bd9ada7fba6d)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Dark Mode:
+
+![quran app dark mode](https://github.com/MarkMeme/quran-app/assets/119113382/a994a8fb-e933-42b3-969a-d963b2024536)
