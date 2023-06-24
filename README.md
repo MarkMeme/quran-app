@@ -1,4 +1,4 @@
-# quran_app
+# Quran App
 
 An Islamic app with many features.
 the app in dark and light modes with English and Arabic languages.
